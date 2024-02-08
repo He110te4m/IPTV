@@ -1,0 +1,25 @@
+{
+  "extends": [
+    "@antfu"
+  ],
+  "rules": {
+    "curly": [
+      2,
+      "all"
+    ],
+    "@typescript-eslint/brace-style": [
+      2,
+      "1tbs"
+    ],
+    "@typescript-eslint/ban-ts-comment": 0,
+    "spaced-comment": [
+      "error",
+      "always",
+      {
+        "line": {
+          "markers": ["#region", "#endregion", "region", "endregion", "/" ]
+        }
+      }
+    ]
+  }
+}
