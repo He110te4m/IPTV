@@ -9,9 +9,10 @@ import type { Channel } from './types/channel'
 const api = express()
 
 const router = Router()
-router.get('/hello', async (req, res) => {
+router.get('/iptv', async (req, res) => {
   const content = await getCurrentIPTVList()
   res.set('Content-Disposition', '"iptv.m3u8"')
+  res.set('Content-Type', 'application/x-mpegURL; charset=utf-8')
   res.set('Cache-Control', 'no-cache')
   // eslint-disable-next-line n/prefer-global/buffer
   res.end(Buffer.from(content))

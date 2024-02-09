@@ -13,7 +13,7 @@ NODE_VERSION = "18"
   force = true
   from = "/api/*"
   status = 200
-  to = "/.netlify/functions/redirect/:splat"
+  to = "/.netlify/functions/iptv/:splat"
 
 [[headers]]
   for = "/*.m3u8"
