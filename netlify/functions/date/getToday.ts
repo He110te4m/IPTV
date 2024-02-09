@@ -1,10 +1,12 @@
 import { DateTime } from 'luxon'
 
+const timeZone = 'Asia/Shanghai'
+
 export function getToday() {
-  const today = DateTime.local()
-    .setZone('Asia/Shanghai')
-    .startOf('day')
+  const today = DateTime.local({ zone: timeZone })
     .toJSDate()
+
+  today.setHours(0, 0, 0, 0)
 
   console.log('current date', today)
 
