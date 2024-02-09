@@ -15,8 +15,6 @@ async function task() {
 
 export default task
 
-task()
-
 export const config: Config = {
   schedule: '@hourly',
 }
