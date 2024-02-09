@@ -2,10 +2,9 @@ import { mkdir, writeFile } from 'node:fs/promises'
 import { dirname, resolve } from 'node:path'
 import process from 'node:process'
 import { writeM3U } from '@iptv/playlist'
+import type { Channel } from '~/types/channel'
 
-type M3uPlaylist = Parameters<typeof writeM3U>[0]
-
-export async function writePlayList(channels: M3uPlaylist['channels']) {
+export async function writePlayList(channels: Channel[]) {
   const playListContent = writeM3U({
     channels,
   })

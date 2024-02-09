@@ -1,7 +1,9 @@
+import { calcCUTV } from './cutv'
 import { mergePlayList } from './merge'
 
 main()
 
-function main() {
-  mergePlayList()
+async function main() {
+  const cutvChannels = calcCUTV()
+  await mergePlayList(cutvChannels)
 }

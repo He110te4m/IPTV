@@ -1,8 +1,7 @@
 import { readFile } from 'node:fs/promises'
 import process from 'node:process'
 import { parseM3U } from '@iptv/playlist'
-
-type M3uPlaylist = ReturnType<typeof parseM3U>
+import type { Channel } from '~/types/channel'
 
 const isDev = process.env.DEV?.toLowerCase() === 'true'
 
@@ -10,7 +9,7 @@ export async function cleaningPlayList(playListPath: string) {
   const playListContent = await readFile(playListPath)
   const playList = parseM3U(playListContent.toString())
 
-  const cleanedPlayListChannel: M3uPlaylist['channels'] = []
+  const cleanedPlayListChannel: Channel[] = []
   const promiseQueue = playList.channels.map(
     async (channel) => {
       if (!channel.url) {
