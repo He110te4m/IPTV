@@ -29,7 +29,7 @@ function pathname(e: string): string {
   const w = c.substr(4)
   const m = []
   const b = new Date(o).getDay() % 2
-  console.log(JSON.stringify({ c, b }, null, 2))
+  console.log(new Date(o))
   for (let a = 0; a < e.length; a++) {
     if (a % 2 === b) {
       m.push(c.charAt(a % c.length))
@@ -48,10 +48,5 @@ function pathname(e: string): string {
     }
   }
 
-  console.log(JSON.stringify({
-    f,
-    m,
-    e,
-  }, null, 2))
   return ((f.toString(36).split('').reverse().join('')) + m.join('')).substr(0, e.length)
 }
