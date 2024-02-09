@@ -30,7 +30,6 @@ export function generatePathname(hash: string): string {
   const resultChars = []
   const dayOfWeekParity = new Date(initTimestamp).getDay() % 2
   const reversedResultBase36 = resultBase36.split('').reverse().join('')
-  const initialChar = hash.charAt(0)
 
   for (let i = 0; i < hash.length; i++) {
     if (i % 2 === dayOfWeekParity) {
@@ -54,7 +53,22 @@ export function generatePathname(hash: string): string {
 }
 
 function getInitTimestamp(n = new Date()) {
-  const date = new Date(n)
+  const _date = new Date(n)
+  const date = getTimeByZone(_date)
+  globalThis.console.log(`currentDate: ${date.toString()}`)
   date.setHours(0, 0, 0, 0)
   return date.getTime()
+}
+
+function getTimeByZone(date: Date, timezone = 8) {
+  // 本地时间距离（GMT时间）毫秒数
+  const nowDate = date.getTime()
+  // 本地时间和格林威治时间差，单位分钟
+  const offset_GMT = new Date().getTimezoneOffset()
+  //  反推到格林尼治时间
+  const GMT = nowDate + offset_GMT * 60 * 1000
+  //  获取指定时区时间
+  const targetDate = new Date(GMT + timezone * 60 * 60 * 1000)
+
+  return targetDate
 }
