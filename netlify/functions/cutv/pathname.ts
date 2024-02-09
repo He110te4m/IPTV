@@ -4,8 +4,7 @@ export function generatePathname(hash: string): string {
   return pathname(hash)
 }
 function pathname(e) {
-  for (var n, i, o = (i = n ? new Date(n) : new Date,
-    getToday()), a = 0, r = 0, d = -1, l = 0; a < e.length; a++) {
+  for (var o = getToday(), a = 0, r = 0, d = -1, l = 0; a < e.length; a++) {
     var p = e.charCodeAt(a);
     r += p,
       -1 != d && (l += d - p),
