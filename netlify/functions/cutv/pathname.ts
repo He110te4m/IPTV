@@ -29,8 +29,6 @@ function pathname(e: string): string {
   const w = c.substr(4)
   const m = []
   const b = getToday().get('day') % 2
-  console.log('date:', getToday())
-  console.log(JSON.stringify({ c, b }, null, 2))
   for (let a = 0; a < e.length; a++) {
     if (a % 2 === b) {
       m.push(c.charAt(a % c.length))
