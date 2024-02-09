@@ -1,14 +1,7 @@
-import { cleaningPlayList, getAllPlayList, writePlayList } from './utils'
+import { mergePlayList } from './merge'
 
 main()
 
-async function main() {
-  const allPlayList = await getAllPlayList()
-  const checkQueue = await Promise.allSettled(
-    allPlayList.map(cleaningPlayList),
-  )
-
-  writePlayList(
-    checkQueue.flatMap(item => item.status === 'fulfilled' ? item.value : []),
-  )
+function main() {
+  mergePlayList()
 }
