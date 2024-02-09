@@ -8,4 +8,4 @@ NODE_VERSION = "18"
 [[headers]]
   for = "/*.m3u8"
   [headers.values]
-    Cache-Control = "no-cache	"
+    Cache-Control = "no-cache"

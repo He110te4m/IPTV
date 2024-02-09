@@ -55,7 +55,6 @@ export function generatePathname(hash: string): string {
 function getInitTimestamp(n = new Date()) {
   const _date = new Date(n)
   const date = getTimeByZone(_date)
-  globalThis.console.log(`currentDate: ${date.toString()}`)
   date.setHours(0, 0, 0, 0)
   return date.getTime()
 }
