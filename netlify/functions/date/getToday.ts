@@ -2,6 +2,7 @@ export function getToday(timezone = 8) {
   const _date = new Date()
   const date = getTimeByZone(_date, timezone)
   date.setHours(0, 0, 0, 0)
+  globalThis.console.log(`today: ${date.toString()}`)
   return date.getTime()
 }
 
