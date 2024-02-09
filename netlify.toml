@@ -7,8 +7,3 @@
   from = "/api/*"
   status = 200
   to = "/.netlify/functions/redirect/:splat"
-
-[[headers]]
-  for = "/*.m3u8"
-  [headers.values]
-    Cache-Control = "no-cache"
