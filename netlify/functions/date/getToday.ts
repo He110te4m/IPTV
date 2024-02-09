@@ -8,6 +8,6 @@ export function getToday() {
     .startOf('day')
     .valueOf()
 
-  console.log(`today: ${today}`)
+  globalThis.console.log(`today: ${today}`)
   return today
 }
