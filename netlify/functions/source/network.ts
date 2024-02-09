@@ -1,3 +1,4 @@
+export const networkSource = `
 #EXTM3U
 
 #EXTINF:-1 tvg-name="LoveNrture" group-title="·4K",Love Nrture 4K「自然」
@@ -4638,3 +4639,4 @@ https://hls.cntv.kcdnvip.com/asp/hls/1200/0303000a/3/default/25c049869a174f5fa58
 https://hls.cntv.kcdnvip.com/asp/hls/1200/0303000a/3/default/4d0dc6b22b8e48efa4a984ec990a4faf/1200.m3u8
 #EXTINF:-1 group-title="•动物世界",足球超级猎食者(下)
 https://hls.cntv.kcdnvip.com/asp/hls/1200/0303000a/3/default/d7aec4db75da469d915a5dd7a0fb3d70/1200.m3u8
+`.trim()
