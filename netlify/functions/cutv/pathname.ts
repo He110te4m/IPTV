@@ -1,55 +1,23 @@
 import { getToday } from '../date'
 
 export function generatePathname(hash: string): string {
-  const initTimestamp = getToday() // 使用默认值而不是 n，因为在此函数中未定义 n
-  let totalCharCodeSum = 0
-  let consecutiveCharCodeDifferenceSum = 0
-  let previousCharCode = -1
-
-  for (let i = 0; i < hash.length; i++) {
-    const charCode = hash.charCodeAt(i)
-    totalCharCodeSum += charCode
-
-    if (previousCharCode !== -1) {
-      consecutiveCharCodeDifferenceSum += previousCharCode - charCode
-    }
-
-    previousCharCode = charCode
-  }
-
-  const resultSum = totalCharCodeSum + consecutiveCharCodeDifferenceSum
-  const resultBase36 = resultSum.toString(36)
-  const initTimestampBase36 = initTimestamp.toString(36)
-
-  let initTimestampCharCodeSum = 0
-  for (let i = 0; i < initTimestampBase36.length; i++) {
-    initTimestampCharCodeSum += initTimestampBase36.charCodeAt(i)
-  }
-
-  const absoluteDifference = Math.abs(initTimestampCharCodeSum - resultSum)
-  const rearrangedInitTimestampBase36 = initTimestampBase36.substr(5) + initTimestampBase36.substr(0, 5)
-
-  const resultChars = []
-  const dayOfWeekParity = new Date(initTimestamp).getDay() % 2
-  const reversedResultBase36 = resultBase36.split('').reverse().join('')
-
-  for (let i = 0; i < hash.length; i++) {
-    if (i % 2 === dayOfWeekParity) {
-      resultChars.push(rearrangedInitTimestampBase36.charAt(i % rearrangedInitTimestampBase36.length))
-    } else {
-      const previousChar = hash.charAt(i - 1)
-      if (previousChar) {
-        const indexInReversedResult = reversedResultBase36.indexOf(previousChar)
-        if (indexInReversedResult === -1) {
-          resultChars.push(previousChar)
-        } else {
-          resultChars.push(resultBase36.charAt(indexInReversedResult))
-        }
-      } else {
-        resultChars.push(resultBase36.charAt(i))
-      }
-    }
-  }
-
-  return (absoluteDifference.toString(36).split('').reverse().join('') + resultChars.join('')).substr(0, hash.length)
+  return pathname(hash)
 }
+function pathname(e) {
+  for (var n, i, o = (i = n ? new Date(n) : new Date,
+    getToday()), a = 0, r = 0, d = -1, l = 0; a < e.length; a++) {
+    var p = e.charCodeAt(a);
+    r += p,
+      -1 != d && (l += d - p),
+      d = p
+  }
+  var s = (r += l).toString(36), c = o.toString(36), u = 0;
+  for (a = 0; a < c.length; a++)
+    u += c.charCodeAt(a);
+  c = c.substr(5) + c.substr(0, 5);
+  var h, v, f = Math.abs(u - r), g = (c = s.split("").reverse().join("") + c).substr(0, 4), w = c.substr(4), m = new Array, b = new Date(o).getDay() % 2;
+  for (a = 0; a < e.length; a++) {
+    a % 2 == b ? m.push(c.charAt(a % c.length)) : (h = e.charAt(a - 1)) ? -1 == (v = g.indexOf(h)) ? m.push(h) : m.push(w.charAt(v)) : m.push(g.charAt(a))
+  }
+  return ((f.toString(36).split("").reverse().join("")) + m.join("")).substr(0, e.length);
+};
