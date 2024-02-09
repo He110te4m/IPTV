@@ -1,14 +1,11 @@
-import { DateTime } from 'luxon'
+import moment from 'moment-timezone'
 
 const timeZone = 'Asia/Shanghai'
 
 export function getToday() {
-  const today = DateTime.local({ zone: timeZone })
-    .toJSDate()
+  const today = moment().tz(timeZone)
 
-  today.setHours(0, 0, 0, 0)
+  console.log(`current date: ${today.format('YYYY-MM-DD HH:mm:ss')}`)
 
-  console.log('current date', today)
-
-  return today
+  return today.unix()
 }
