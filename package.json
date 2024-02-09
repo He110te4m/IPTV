@@ -4,6 +4,9 @@
   "version": "1.0.0",
   "description": "Custom IPTV source",
   "scripts": {
+    "gen:clean": "cross-env CHECK_SOURCE='true' npm run gen",
+    "gen": "cross-env DEV='true' npm run build",
+    "build": "tsx ./src/main.ts",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
