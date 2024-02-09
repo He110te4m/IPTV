@@ -5,7 +5,7 @@ export function generatePathname(hash: string): string {
 }
 
 function pathname(e: string): string {
-  const o = getToday()
+  const o = getToday().getTime()
   let r = 0
   let d = -1
   let l = 0
@@ -28,8 +28,7 @@ function pathname(e: string): string {
   const g = (c = s.split('').reverse().join('') + c).substr(0, 4)
   const w = c.substr(4)
   const m = []
-  const b = new Date(o).getDay() % 2
-  console.log(new Date(o))
+  const b = getToday().getDay() % 2
   for (let a = 0; a < e.length; a++) {
     if (a % 2 === b) {
       m.push(c.charAt(a % c.length))

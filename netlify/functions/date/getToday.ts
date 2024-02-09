@@ -6,7 +6,7 @@ export function getToday() {
   const today = moment()
     .tz(timeZone)
     .startOf('day')
-    .valueOf()
+    .toDate()
 
   globalThis.console.log(`today: ${today}`)
   return today
