@@ -1,6 +1,6 @@
+import type { Channel } from '../types/channel'
 import { channelMap } from './consts'
 import { generateCUTVUrl } from './url'
-import type { Channel } from '~/types/channel'
 
 export function calcCUTV() {
   const channels: Channel[] = []

@@ -1,24 +1,31 @@
-import { resolve } from 'node:path'
-import { existsSync } from 'node:fs'
-import { readFile } from 'node:fs/promises'
 import express, { Router } from 'express'
 import serverless from 'serverless-http'
-import { getToday } from '../../src/date'
+import { writeM3U } from '@iptv/playlist'
+import { calcCUTV } from './cutv'
+import { mergeChannels } from './merge'
+import { generatePlayList } from './playlist'
+import type { Channel } from './types/channel'
 
 const api = express()
 
 const router = Router()
 router.get('/hello', async (req, res) => {
-  let file = resolve(`./dist/${getToday()}.m3u8`)
-  if (!existsSync(file)) {
-    file = resolve('./dist/iptv.m3u8')
-  }
-
-  const buff = await readFile(file)
+  const content = await getCurrentIPTVList()
   res.set('Content-Disposition', 'iptv.m3u8')
-  res.end(buff)
+  res.set('Cache-Control', 'no-cache')
+  // eslint-disable-next-line n/prefer-global/buffer
+  res.end(Buffer.from(content))
 })
 
 api.use('/api/', router)
 
 export const handler = serverless(api)
+
+async function getCurrentIPTVList() {
+  const cutvChannels = calcCUTV()
+  const handlePlayList = async (channels: Channel[]) => mergeChannels(channels, cutvChannels)
+  const playList = await handlePlayList(await generatePlayList())
+  return writeM3U({
+    channels: playList,
+  })
+}

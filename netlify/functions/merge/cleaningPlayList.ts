@@ -1,5 +1,5 @@
 import process from 'node:process'
-import type { Channel } from '~/types/channel'
+import type { Channel } from '../types/channel'
 
 const isDev = process.env.DEV?.toLowerCase() === 'true'
 

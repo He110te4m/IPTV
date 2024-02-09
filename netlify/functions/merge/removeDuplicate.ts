@@ -1,4 +1,4 @@
-import type { Channel } from '~/types/channel'
+import type { Channel } from '../types/channel'
 
 export function removeDuplicate(channels: Channel[]) {
   const cache = new Map<string, Channel>()

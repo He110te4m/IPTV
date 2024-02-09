@@ -1,4 +1,4 @@
-import { getToday } from '~/date'
+import { getToday } from '../date'
 
 export function generatePathname(hash: string): string {
   const initTimestamp = getToday() // 使用默认值而不是 n，因为在此函数中未定义 n
