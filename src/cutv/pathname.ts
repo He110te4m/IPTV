@@ -1,5 +1,7 @@
+import { getToday } from '~/date'
+
 export function generatePathname(hash: string): string {
-  const initTimestamp = getInitTimestamp() // 使用默认值而不是 n，因为在此函数中未定义 n
+  const initTimestamp = getToday() // 使用默认值而不是 n，因为在此函数中未定义 n
   let totalCharCodeSum = 0
   let consecutiveCharCodeDifferenceSum = 0
   let previousCharCode = -1
@@ -50,24 +52,4 @@ export function generatePathname(hash: string): string {
   }
 
   return (absoluteDifference.toString(36).split('').reverse().join('') + resultChars.join('')).substr(0, hash.length)
-}
-
-function getInitTimestamp(n = new Date()) {
-  const _date = new Date(n)
-  const date = getTimeByZone(_date)
-  date.setHours(0, 0, 0, 0)
-  return date.getTime()
-}
-
-function getTimeByZone(date: Date, timezone = 8) {
-  // 本地时间距离（GMT时间）毫秒数
-  const nowDate = date.getTime()
-  // 本地时间和格林威治时间差，单位分钟
-  const offset_GMT = new Date().getTimezoneOffset()
-  //  反推到格林尼治时间
-  const GMT = nowDate + offset_GMT * 60 * 1000
-  //  获取指定时区时间
-  const targetDate = new Date(GMT + timezone * 60 * 60 * 1000)
-
-  return targetDate
 }
