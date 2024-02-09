@@ -1,12 +1,12 @@
-import { utcToZonedTime } from 'date-fns-tz'
-import { startOfDay } from 'date-fns'
+import { DateTime } from 'luxon'
 
 export function getToday() {
-  const now = new Date()
+  const today = DateTime.now()
+    .setZone('Asia/Shanghai')
+    .startOf('day')
+    .toJSDate()
 
-  const beijingTime = utcToZonedTime(now, 'Asia/Shanghai')
-  const beijingMidnight = startOfDay(beijingTime)
-  console.log(`current date: ${beijingMidnight.toString()}`)
+  console.log('current date', today)
 
-  return beijingMidnight
+  return today
 }
