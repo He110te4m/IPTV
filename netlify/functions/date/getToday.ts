@@ -8,7 +8,5 @@ export function getToday() {
     .startOf('day')
     .valueOf()
 
-  console.log(`today: ${today}`)
-
   return today
 }
