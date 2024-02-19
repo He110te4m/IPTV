@@ -1,6 +1,7 @@
 import { parseM3U } from '@iptv/playlist'
-import { iptvSource } from '../source'
+import { getIPTVSources } from '../source'
 
 export async function generatePlayList() {
-  return iptvSource.flatMap(source => parseM3U(source).channels)
+  const iptvSources = await getIPTVSources()
+  return iptvSources.flatMap(source => parseM3U(source).channels)
 }
