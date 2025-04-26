@@ -33,11 +33,11 @@ export const channelMap: ChannelMap = {
   nczf: { name: '南昌资讯', pathname: 'cV2gp2d', cutvName: 'nctv' },
   ncdtds: { name: '南昌公共', pathname: 'n27bmcx', cutvName: 'nctv' },
 
-  // 汕头
-  stxwzh: { name: '汕头新闻综合', pathname: 'lKGXIQa', cutvName: 'sttv' },
-  stjjsh: { name: '汕头经济生活', pathname: '7xjJK9d', cutvName: 'sttv' },
-  styswy: { name: '汕头影视文艺', pathname: 'G7Kql7a', cutvName: 'sttv' },
-  stdt: { name: '汕头动态', pathname: 'L3y6rt8', cutvName: 'sttv' },
+  // // 汕头
+  // stxwzh: { name: '汕头新闻综合', pathname: 'lKGXIQa', cutvName: 'sttv' },
+  // stjjsh: { name: '汕头经济生活', pathname: '7xjJK9d', cutvName: 'sttv' },
+  // styswy: { name: '汕头影视文艺', pathname: 'G7Kql7a', cutvName: 'sttv' },
+  // stdt: { name: '汕头动态', pathname: 'L3y6rt8', cutvName: 'sttv' },
 
   // 珠海
   zhxw: { name: '珠海新闻', pathname: 'zZGtroL', cutvName: 'zhtv' },

@@ -4,8 +4,7 @@
   "version": "1.0.0",
   "description": "Custom IPTV source",
   "scripts": {
-    "gen:clean": "cross-env CHECK_SOURCE='true' npm run gen",
-    "gen": "cross-env DEV='true' npm run build",
+    "dev": "cross-env DEV='true' netlify dev",
     "build": "tsx ./src/main.ts",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
@@ -20,10 +19,14 @@
     "cross-env": "^7.0.3",
     "eslint": "^8.56.0",
     "express": "^4.18.2",
+    "md5": "^2.3.0",
     "moment-timezone": "^0.5.45",
     "node-fetch": "^3.3.2",
     "serverless-http": "^3.2.0",
     "tsx": "^4.7.0",
     "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "@types/md5": "^2.3.5"
   }
 }

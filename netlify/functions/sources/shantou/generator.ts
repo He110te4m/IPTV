@@ -1,18 +1,25 @@
-import { getToday } from '../date'
+import md5 from 'md5'
+import { getNow } from '../../utils/parse'
 
-export function generatePathname(hash: string): string {
-  return pathname(hash)
+export function generateShantouPlaylist(date: Date, id: string) {
+  const livekey = pathname(date, id)
+  const t = (Math.round(getNow().getTime() / 1000) + 7200).toString(16)
+  const sign = md5(`bf9b2cab35a9c38857b82aabf99874aa96b9ffbb/${id}/500/${livekey}.m3u8${t}`)
+
+  return `https://sttv-hls.strtv.cn/${id}/500/${livekey}.m3u8?sign=${sign}&t=${t}`
 }
 
-function pathname(e: string): string {
-  const o = getToday().valueOf()
+function pathname(today: Date, e: string): string {
+  const o = today.valueOf()
   let r = 0
   let d = -1
   let l = 0
   for (let a = 0; a < e.length; a++) {
     const p = e.charCodeAt(a)
     r += p
-    d !== -1 && (l += d - p)
+    if (d !== -1) {
+      l += d - p
+    }
     d = p
   }
   const s = (r += l).toString(36)
@@ -25,10 +32,13 @@ function pathname(e: string): string {
   let h
   let v
   const f = Math.abs(u - r)
-  const g = (c = s.split('').reverse().join('') + c).substr(0, 4)
+  c = s.split('').reverse().join('') + c
+
+  const g = c.substr(0, 4)
   const w = c.substr(4)
   const m = []
-  const b = getToday().get('day') % 2
+  const b = today.getDay() % 2
+
   for (let a = 0; a < e.length; a++) {
     if (a % 2 === b) {
       m.push(c.charAt(a % c.length))
