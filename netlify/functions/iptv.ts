@@ -1,7 +1,6 @@
 import express, { Router } from 'express'
 import serverless from 'serverless-http'
 import { getIPTVSources } from './sources'
-import { parseDate } from './utils/parse'
 
 const isDev = process.env.DEV === 'true'
 
@@ -9,9 +8,7 @@ const api = express()
 
 const router = Router()
 router.get('/iptv', async (req, res) => {
-  const date = parseDate(req.query._t)
-  globalThis.console.log(`request date: ${date}`)
-  const content = await getIPTVSources(date)
+  const content = await getIPTVSources()
   if (isDev || req.query.preview) {
     res.send(createPreviewContent(content))
     return

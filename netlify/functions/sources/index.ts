@@ -12,8 +12,9 @@ const sources: Source[] = [
   // iptv,
 ]
 
-export async function getIPTVSources(timestamp: number) {
+export async function getIPTVSources() {
   const date = getToday()
+  globalThis.console.log(`date: ${date}, timestamp: ${date.getTime()}`)
   const channels = await Promise.allSettled(sources.map(source => source.get(date)))
     .then(results => results.flatMap(result => result.status === 'fulfilled' ? result.value : []))
 
