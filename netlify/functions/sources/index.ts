@@ -2,12 +2,13 @@ import { writeM3U } from '@iptv/playlist'
 import type { Channel, Source } from './types'
 import shantou from './shantou'
 import cutv from './cutv'
-import iptv from './iptv'
+
+// import iptv from './iptv'
 
 const sources: Source[] = [
   shantou,
   cutv,
-  iptv,
+  // iptv,
 ]
 
 export async function getIPTVSources(timestamp: number) {
