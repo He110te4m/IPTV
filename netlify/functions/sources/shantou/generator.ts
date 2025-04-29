@@ -11,6 +11,7 @@ export function generateShantouPlaylist(date: Date, id: string) {
 
 function pathname(today: Date, e: string): string {
   const o = today.valueOf()
+  globalThis.console.log(`o: ${o}`)
   let r = 0
   let d = -1
   let l = 0
@@ -57,6 +58,5 @@ function pathname(today: Date, e: string): string {
     }
   }
 
-  globalThis.console.log(`pathname: ${((f.toString(36).split('').reverse().join('')) + m.join('')).substr(0, e.length)}`)
   return ((f.toString(36).split('').reverse().join('')) + m.join('')).substr(0, e.length)
 }
