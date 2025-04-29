@@ -28,7 +28,7 @@ export function parseDate(date?: unknown): number {
 
 const timeZone = 'Asia/Shanghai'
 
-function getToday() {
+export function getToday() {
   const today = moment()
     .tz(timeZone)
     .startOf('day')

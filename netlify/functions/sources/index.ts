@@ -1,4 +1,5 @@
 import { writeM3U } from '@iptv/playlist'
+import { getToday } from '../utils/parse'
 import type { Channel, Source } from './types'
 import shantou from './shantou'
 import cutv from './cutv'
@@ -12,7 +13,7 @@ const sources: Source[] = [
 ]
 
 export async function getIPTVSources(timestamp: number) {
-  const date = new Date(timestamp)
+  const date = getToday()
   const channels = await Promise.allSettled(sources.map(source => source.get(date)))
     .then(results => results.flatMap(result => result.status === 'fulfilled' ? result.value : []))
 

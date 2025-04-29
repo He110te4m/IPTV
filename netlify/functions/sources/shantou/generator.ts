@@ -57,5 +57,6 @@ function pathname(today: Date, e: string): string {
     }
   }
 
+  globalThis.console.log(`pathname: ${((f.toString(36).split('').reverse().join('')) + m.join('')).substr(0, e.length)}`)
   return ((f.toString(36).split('').reverse().join('')) + m.join('')).substr(0, e.length)
 }
