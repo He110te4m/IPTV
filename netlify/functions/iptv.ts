@@ -10,8 +10,9 @@ const api = express()
 const router = Router()
 router.get('/iptv', async (req, res) => {
   const date = parseDate(req.query._t)
+  globalThis.console.log(`request date: ${date}`)
   const content = await getIPTVSources(date)
-  if (isDev) {
+  if (isDev || req.query.preview) {
     res.send(createPreviewContent(content))
     return
   }
