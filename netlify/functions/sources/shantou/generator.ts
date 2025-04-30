@@ -1,10 +1,13 @@
 import md5 from 'md5'
 import { getNow } from '../../utils/parse'
-import { generatePathname } from './pathname'
+import { pathname } from './pathname'
 
 export function generateShantouPlaylist(date: Date, id: string) {
-  const livekey = generatePathname(date, id)
-  const t = (Math.round(getNow().getTime() / 1000) + 7200).toString(16)
+  const livekey = pathname(date, id)
+
+  const now = getNow()
+  const t = (Math.round(now.getTime() / 1000) + 7200).toString(16)
+  globalThis.console.log(`now: ${now}`)
   const sign = md5(`bf9b2cab35a9c38857b82aabf99874aa96b9ffbb/${id}/500/${livekey}.m3u8${t}`)
 
   return `https://sttv-hls.strtv.cn/${id}/500/${livekey}.m3u8?sign=${sign}&t=${t}`
