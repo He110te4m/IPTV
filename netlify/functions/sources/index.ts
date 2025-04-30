@@ -1,6 +1,7 @@
 import { writeM3U } from '@iptv/playlist'
 import { getToday } from '../utils/parse'
 import type { Channel, Source } from './types'
+import guangzhou from './guangzhou'
 import shantou from './shantou'
 import shenzhen from './shenzhen'
 import iptv from './iptv'
@@ -8,6 +9,7 @@ import iptv from './iptv'
 const sources: Source[] = [
   shantou,
   shenzhen,
+  guangzhou,
   iptv,
 ]
 

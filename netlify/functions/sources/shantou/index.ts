@@ -11,7 +11,7 @@ export default {
       channels.push({
         name: channel.name,
         url: generateShantouPlaylist(date, channel),
-        groupTitle: 'CUTV',
+        groupTitle: '汕头 TV',
         tvgName: channel.name,
         tvgLogo: `https://epg.112114.xyz/logo/${channel.name}.png`,
       })
