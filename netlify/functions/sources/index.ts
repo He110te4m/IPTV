@@ -3,15 +3,12 @@ import { getToday } from '../utils/parse'
 import type { Channel, Source } from './types'
 import shantou from './shantou'
 import shenzhen from './shenzhen'
-
-// import cutv from './cutv'
-// import iptv from './iptv'
+import iptv from './iptv'
 
 const sources: Source[] = [
   shantou,
   shenzhen,
-  // cutv,
-  // iptv,
+  iptv,
 ]
 
 export async function getIPTVSources() {
