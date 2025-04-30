@@ -3,6 +3,7 @@ import { getToday } from '../utils/parse'
 import type { Channel, Source } from './types'
 import guangzhou from './guangzhou'
 import hebei from './hebei'
+import henan from './henan'
 import shantou from './shantou'
 import shenzhen from './shenzhen'
 import iptv from './iptv'
@@ -12,6 +13,7 @@ const sources: Source[] = [
   shenzhen,
   guangzhou,
   hebei,
+  henan,
   iptv,
 ]
 
