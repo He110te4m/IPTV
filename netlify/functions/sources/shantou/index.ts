@@ -4,6 +4,7 @@ import { generateShantouPlaylist } from './generator'
 
 export default {
   get(date: Date) {
+    globalThis.console.log(`date: ${date}, now: ${new Date()}`)
     const channels: Channel[] = []
     Object.keys(channelMap).forEach((key) => {
       const channel = channelMap[key]
