@@ -8,6 +8,7 @@ import shantou from './shantou'
 import shenzhen from './shenzhen'
 import fixed from './fixed'
 import iptv from './iptv'
+import migu from './migu'
 
 const sources: Source[] = [
   shantou,
@@ -15,6 +16,7 @@ const sources: Source[] = [
   guangzhou,
   hebei,
   henan,
+  migu,
   fixed,
   iptv,
 ]

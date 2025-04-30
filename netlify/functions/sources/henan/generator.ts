@@ -1,5 +1,4 @@
 import { createHash } from 'node:crypto'
-import { writeFileSync } from 'node:fs'
 import type { Channel as M3UChannel } from '../types'
 import { API_SECRET, API_URL, channelMap } from './consts'
 import type { ChannelInfo } from './types'
@@ -22,7 +21,6 @@ export async function generateHenanUrl(): Promise<M3UChannel[]> {
   }
 
   const channels: ChannelInfo[] = await response.json() as ChannelInfo[]
-  writeFileSync('henan.json', JSON.stringify(channels, null, 2))
   const m3uChannels: M3UChannel[] = []
 
   for (const [, channel] of Object.entries(channelMap)) {
