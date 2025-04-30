@@ -4,6 +4,10 @@ import { getIPTVSources } from './sources'
 
 const isDev = process.env.DEV === 'true'
 
+globalThis.console.log(`TZ: ${process.env.TZ}`)
+
+process.env.TZ = 'Asia/Shanghai'
+
 const api = express()
 
 const router = Router()
