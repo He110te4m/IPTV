@@ -1,9 +1,22 @@
-export function generatePathname(today: Date, hash: string): string {
-  return pathname(today, hash)
+import md5 from 'md5'
+import { getNow } from '../../utils/parse'
+import type { Channel } from './consts'
+
+export function generateShantouPlaylist(date: Date, channel: Channel) {
+  const id = channel.pathname
+  const livekey = pathname(date, id)
+
+  const now = getNow()
+  const t = (Math.round(now.getTime() / 1000) + 7200).toString(16)
+  globalThis.console.log(`now: ${now}`)
+  const sign = md5(`bf9b2cab35a9c38857b82aabf99874aa96b9ffbb/${id}/500/${livekey}.m3u8${t}`)
+
+  return `https://${channel.cutvName}-tsl.cutv.com/${id}/500/${livekey}.m3u8?sign=${sign}&t=${t}`
 }
 
 function pathname(today: Date, e: string): string {
   const o = today.valueOf()
+  globalThis.console.log(`o: ${o}`)
   let r = 0
   let d = -1
   let l = 0

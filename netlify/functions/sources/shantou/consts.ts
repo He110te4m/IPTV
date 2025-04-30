@@ -1,4 +1,4 @@
-interface Channel {
+export interface Channel {
   name: string
   pathname: string
   cutvName: string

@@ -1,15 +1,16 @@
 import type { Channel, Source } from '../types'
 import { channelMap } from './consts'
-import { generateCUTVUrl } from './url'
+import { generateShantouPlaylist } from './generator'
 
 export default {
   get(date: Date) {
+    globalThis.console.log(`date: ${date}, now: ${new Date()}, TZ: ${process.env.TZ}`)
     const channels: Channel[] = []
     Object.keys(channelMap).forEach((key) => {
       const channel = channelMap[key]
       channels.push({
         name: channel.name,
-        url: generateCUTVUrl(date, channel),
+        url: generateShantouPlaylist(date, channel),
         groupTitle: 'CUTV',
         tvgName: channel.name,
         tvgLogo: `https://epg.112114.xyz/logo/${channel.name}.png`,

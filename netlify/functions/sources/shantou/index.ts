@@ -10,7 +10,7 @@ export default {
       const channel = channelMap[key]
       channels.push({
         name: channel.name,
-        url: generateShantouPlaylist(date, channel.pathname),
+        url: generateShantouPlaylist(date, channel),
         groupTitle: 'CUTV',
         tvgName: channel.name,
         tvgLogo: `https://epg.112114.xyz/logo/${channel.name}.png`,

@@ -1,9 +1,9 @@
 import md5 from 'md5'
 import { getNow } from '../../utils/parse'
+import type { Channel } from './consts'
 
-// import { pathname } from './pathname'
-
-export function generateShantouPlaylist(date: Date, id: string) {
+export function generateShantouPlaylist(date: Date, channel: Channel) {
+  const id = channel.pathname
   const livekey = pathname(date, id)
 
   const now = getNow()
