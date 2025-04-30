@@ -1,4 +1,4 @@
-import moment from 'moment-timezone'
+// import moment from 'moment-timezone'
 import { isNumber, isString } from './is'
 
 export function parseDate(date?: unknown): number {
@@ -26,20 +26,27 @@ export function parseDate(date?: unknown): number {
   return today.getTime()
 }
 
-const timeZone = 'Asia/Shanghai'
+// const timeZone = 'Asia/Shanghai'
 
 export function getToday() {
-  const today = moment()
-    .tz(timeZone)
-    .startOf('day')
+  // const today = moment()
+  //   .tz(timeZone)
+  //   .startOf('day')
 
-  globalThis.console.log(`today: ${today.toDate()}`)
-  return today.toDate()
+  // return today.toDate()
+  const now = getNow()
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate())
+
+  globalThis.console.log(`today: ${today}`)
+
+  return today
 }
 
 export function getNow() {
-  const now = moment()
-    .tz(timeZone)
+  // const now = moment()
+  //   .tz(timeZone)
 
-  return now.toDate()
+  // return now.toDate()
+
+  return new Date()
 }
